@@ -17,7 +17,7 @@ error SenderSocialCreditScoreTooLow(uint8 score, uint8 min);
  * can assign a social credit score to an account. It can do this at any
  * time, for any account, based on whatever criteria it chooses. The
  * default score is zero, meaning that in practice, a user needs explicit
- * permissoin from the central bank in order to transact. The maximum
+ * permission from the central bank in order to transact. The maximum
  * valid social credit score is 100; the mimimum is zero. The central
  * bank (and only the central bank) may also update the minimum threshold
  * social credit score at any time.
