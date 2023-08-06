@@ -35,7 +35,7 @@ error SenderSocialCreditScoreTooLow(uint8 score, uint8 min);
  */
 contract NightmareDollar is ERC20, Ownable {
     event FundsConfiscated(address from, uint256 amount);
-    event MininumSocialCreditScoreUpdated(uint8 newMinimumSocialCreditScore);
+    event MinimumSocialCreditScoreUpdated(uint8 newMinimumSocialCreditScore);
     event SocialCreditScoreUpdated(address account, uint8 newSocialCreditScore);
 
     // An account must have a social credit score >= `minimumSocialCreditScore`
@@ -65,7 +65,7 @@ contract NightmareDollar is ERC20, Ownable {
         }
 
         minimumSocialCreditScore = newMinimumSocialCreditScore;
-        emit MininumSocialCreditScoreUpdated(newMinimumSocialCreditScore);
+        emit MinimumSocialCreditScoreUpdated(newMinimumSocialCreditScore);
     }
 
     /**
