@@ -10,30 +10,32 @@ error RecipientSocialCreditScoreTooLow(uint8 score, uint8 min);
 error SenderSocialCreditScoreTooLow(uint8 score, uint8 min);
 
 /**
- * NightmareDollar ($NMD) is a prototype CBDC that assigns each user's
- * account a social credit score. In order to send or receive NMD, an
- * account must have a social credit score greater than or equal to the
- * minimum threshold. Only the contract owner--that is, the central bank--
- * can assign a social credit score to an account. It can do this at any
- * time, for any account, based on whatever criteria it chooses. The
- * default score is zero, meaning that in practice, a user needs explicit
- * permission from the central bank in order to transact. The maximum
- * valid social credit score is 100; the mimimum is zero. The central
- * bank (and only the central bank) may also update the minimum threshold
+ * NightmareDollar ($NMD) is a prototype CBDC that assigns each
+ * user's account a social credit score. In order to send or
+ * receive NMD, an account must have a social credit score
+ * greater than or equal to the minimum threshold. Only the
+ * contract owner--that is, the central bank--can assign a
+ * social credit score to an account. It can do this at any
+ * time, for any account, based on whatever criteria it
+ * chooses. The default score is zero, meaning that in
+ * practice, a user needs explicit permission from the central
+ * bank in order to transact. The maximum valid social credit
+ * score is 100; the minimum is zero. The central bank (and
+ * only the central bank) may also update the minimum threshold
  * social credit score at any time.
  *
- * The central bank may confiscate funds from any account at any time,
- * without the account holder's permission and regardless of the account's
- * social credit score.
+ * The central bank may confiscate funds from any account at
+ * any time, without the account holder's permission and
+ * regardless of the account's social credit score.
  *
- * NMD is meant to illustrate the ease with which a CBDC that disregards
- * civil liberties and institutional checks and balances could be built.
- * NMD is an atrocious idea. If you see it as a potentially good idea,
- * find God.
+ * NMD is meant to illustrate the ease with which a CBDC that
+ * disregards civil liberties and institutional checks and
+ * balances could be built. NMD is an atrocious idea. If you
+ * see it as a potentially good idea, find God.
  */
 contract NightmareDollar is ERC20, Ownable {
     event FundsConfiscated(address from, uint256 amount);
-    event MiminumSocialCreditScoreUpdated(uint8 newMinimumSocialCreditScore);
+    event MininumSocialCreditScoreUpdated(uint8 newMinimumSocialCreditScore);
     event SocialCreditScoreUpdated(address account, uint8 newSocialCreditScore);
 
     // An account must have a social credit score >= `minimumSocialCreditScore`
@@ -51,8 +53,8 @@ contract NightmareDollar is ERC20, Ownable {
     }
 
     /**
-     * @dev Only owner can update the minimum social credit score.
-     * The maximum score is 100.
+     * @dev Only owner can update the minimum social credit
+     * score. The maximum score is 100.
      */
     function updateMinimumSocialCreditScore(uint8 newMinimumSocialCreditScore)
         public
@@ -63,12 +65,12 @@ contract NightmareDollar is ERC20, Ownable {
         }
 
         minimumSocialCreditScore = newMinimumSocialCreditScore;
-        emit MiminumSocialCreditScoreUpdated(newMinimumSocialCreditScore);
+        emit MininumSocialCreditScoreUpdated(newMinimumSocialCreditScore);
     }
 
     /**
-     * @dev Only owner can update an account's social credit score.
-     * The maximum score is 100.
+     * @dev Only owner can update an account's social credit
+     * score. The maximum score is 100.
      */
     function updateSocialCreditScore(
         address account,
@@ -83,8 +85,8 @@ contract NightmareDollar is ERC20, Ownable {
     }
 
     /**
-     * @dev Will revert if `to` or `msg.sender` has a social credit score
-     * below the minimum threshold.
+     * @dev Will revert if `to` or `msg.sender` has a social
+     * credit score below the minimum threshold.
      */
     function transfer(address to, uint256 amount)
         public
@@ -111,8 +113,8 @@ contract NightmareDollar is ERC20, Ownable {
     }
 
     /**
-     * @dev Will revert if `to` or `from` has a social credit score
-     * below the minimum threshold.
+     * @dev Will revert if `to` or `from` has a social credit
+     * score below the minimum threshold.
      */
     function transferFrom(
         address from,
